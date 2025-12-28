@@ -20,6 +20,7 @@ from extract_utils.main import (
 namespace_imports = [
     'device/oneplus/sm8350-common',
     'hardware/oplus',
+    'hardware/pixelworks/interfaces',
     'hardware/qcom-caf/sm8350',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/commonsys-intf/display',
@@ -78,6 +79,8 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libsnapdragoncolor-manager.so',
     ): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+    'system_ext/bin/horae': blob_fixup()
+        .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-21.7.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
